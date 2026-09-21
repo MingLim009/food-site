@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String                @id @default(cuid())
+  email          String                @unique
+  passwordHash   String
+  name           String
+  role           String                @default("PARENT")
+  plan           String                @default("NONE")
+  planExpiresAt  DateTime?
+  lgpdAcceptedAt DateTime?
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
+  children       Child[]
+  conversations  Conversation[]
+  questionnaires QuestionnaireResult[]
+}
+
+model Child {
+  id             String         @id @default(cuid())
+  userId         String
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  birthDate      DateTime?
+  diagnosisNotes String?
+  textures       String         @default("[]")
+  colors         String         @default("[]")
+  shapes         String         @default("[]")
+  acceptedFoods  String         @default("[]")
+  refusedFoods   String         @default("[]")
+  heightCm       Float?
+  weightKg       Float?
+  notes          String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  foodProgress   FoodProgress[]
+  conversations  Conversation[]
+}
+
+model Conversation {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  childId   String?
+  child     Child?    @relation(fields: [childId], references: [id], onDelete: SetNull)
+  title     String    @default("Nova conversa")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String
+  content        String
+  createdAt      DateTime     @default(now())
+}
+
+model FoodProgress {
+  id        String   @id @default(cuid())
+  childId   String
+  child     Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+  foodName  String
+  step      Int      @default(1)
+  notes     String?
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([childId, foodName])
+}
+
+model KnowledgeChunk {
+  id        String   @id @default(cuid())
+  title     String
+  category  String
+  content   String
+  tags      String   @default("[]")
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Recipe {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  foodGroups  String   @default("[]")
+  textures    String   @default("[]")
+  steps       String
+  tips        String?
+  imageUrl    String?
+  minPlan     String   @default("PREMIUM")
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FoodChain {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  startFood   String
+  endFood     String
+  steps       String
+  minPlan     String   @default("PREMIUM")
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model QuestionnaireResult {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  childName String?
+  answers   String
+  score     Int
+  summary   String
+  createdAt DateTime @default(now())
+}
