@@ -1,174 +1,184 @@
-"use client";
+import { redirect } from "next/navigation";
+import { requireUser } from "@/lib/auth";
+import { prisma } from "@/lib/db";
+import { canAccessFeature } from "@/lib/plans";
+import { ChatMessageBubble } from "@/components/chat-message";
+import { ChatVoiceControls, ClearChatButton } from "@/components/chat-voice";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+const SUGGESTIONS = [
+  "O que é seletividade alimentar?",
+  "Por que provoca ânsia só de ver ou cheirar um alimento?",
+  "Como começar um encadeamento alimentar? Me mostre com figuras",
+  "Meu filho aceitou pastel de carne. Que cadeia posso testar? Com figuras",
+  "Como usar a Escada do Comer sem pressão?",
+  "Prêmios e obrigar a provar ajudam?",
+  "TEA e seletividade: o que priorizar na mesa?",
+  "TDAH e fuga da mesa: o que tentar primeiro?",
+];
 
-type Child = { id: string; name: string };
-type Message = { id: string; role: string; content: string };
-type Conversation = { id: string; title: string; childId: string | null };
+type Props = {
+  searchParams: Promise<{ c?: string; error?: string; child?: string }>;
+};
 
-export default function ChatPage() {
-  const [children, setChildren] = useState<Child[]>([]);
-  const [childId, setChildId] = useState("");
-  const [conversationId, setConversationId] = useState("");
-  const [conversations, setConversations] = useState<Conversation[]>([]);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+export default async function ChatPage({ searchParams }: Props) {
+  let user;
+  try {
+    user = await requireUser();
+  } catch {
+    redirect("/login");
+  }
 
-  const selectedChild = useMemo(
-    () => children.find((c) => c.id === childId),
-    [children, childId]
-  );
+  if (!canAccessFeature(user.plan, user.planExpiresAt, "ai")) {
+    return (
+      <div className="card space-y-3 p-5">
+        <h1 className="text-2xl font-semibold">TIA Nutri</h1>
+        <p className="text-sm text-[var(--muted)]">
+          A TIA Nutri não está incluída no plano <strong>Básico</strong>. Disponível no teste
+          grátis, no Médio (Premium) e no Gold.
+        </p>
+        <a href="/app/planos" className="btn btn-primary">
+          Ver planos
+        </a>
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    fetch("/api/children")
-      .then((r) => r.json())
-      .then((d) => {
-        setChildren(d.children || []);
-        if (d.children?.[0]) setChildId(d.children[0].id);
-      });
-  }, []);
+  const sp = await searchParams;
 
-  useEffect(() => {
-    if (!childId) return;
-    fetch(`/api/chat?childId=${childId}`)
-      .then((r) => r.json())
-      .then((d) => setConversations(d.conversations || []));
-  }, [childId]);
+  const children = await prisma.child.findMany({
+    where: { userId: user.id },
+    orderBy: { updatedAt: "desc" },
+    select: { id: true, name: true },
+  });
 
-  async function ensureConversation() {
-    if (conversationId) return conversationId;
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId }),
+  let messages: { id: string; role: string; content: string }[] = [];
+  let conversationId = "";
+  let childId =
+    (sp.child && children.some((c) => c.id === sp.child) ? sp.child : null) ||
+    children[0]?.id ||
+    "";
+
+  if (sp.c) {
+    const conversation = await prisma.conversation.findFirst({
+      where: { id: sp.c, userId: user.id },
+      include: { messages: { orderBy: { createdAt: "asc" } } },
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Falha ao criar conversa");
-    setConversationId(data.conversation.id);
-    setConversations((prev) => [data.conversation, ...prev]);
-    return data.conversation.id as string;
-  }
-
-  async function openConversation(id: string) {
-    setConversationId(id);
-    const res = await fetch(`/api/chat/messages?id=${id}`);
-    const data = await res.json();
-    if (res.ok) setMessages(data.conversation.messages || []);
-  }
-
-  async function send(e: FormEvent) {
-    e.preventDefault();
-    if (!text.trim() || !childId) return;
-    setLoading(true);
-    setError("");
-    try {
-      const id = await ensureConversation();
-      const optimistic: Message = { id: "tmp", role: "user", content: text };
-      setMessages((m) => [...m, optimistic]);
-      const content = text;
-      setText("");
-      const res = await fetch("/api/chat", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ conversationId: id, content }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erro");
-      const detail = await fetch(`/api/chat/messages?id=${id}`);
-      const full = await detail.json();
-      setMessages(full.conversation.messages || []);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro");
-    } finally {
-      setLoading(false);
+    if (conversation) {
+      conversationId = conversation.id;
+      childId = conversation.childId || childId;
+      messages = conversation.messages.map((m) => ({
+        id: m.id,
+        role: m.role,
+        content: m.content,
+      }));
     }
   }
+
+  const error =
+    sp.error === "empty"
+      ? "Digite ou fale uma pergunta."
+      : sp.error === "child"
+        ? "Selecione uma criança."
+        : "";
+
+  const selectedChild = children.find((c) => c.id === childId);
 
   return (
     <div className="flex min-h-[70vh] flex-col gap-4">
       <div>
-        <h1 className="display text-3xl font-bold">
-          TIA Nutri
-        </h1>
+        <h1 className="display text-3xl font-bold">Pergunte à TIA Nutri</h1>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          Sua assistente nutricional · respostas só sobre o perfil ativo · sem doses · sem diagnóstico
+          Biblioteca FAQ Andreza Dias (TEA/TDAH) + respostas completas. Peça figuras para gerar
+          imagem; fale no microfone se não quiser digitar; toque em Ouvir para áudio.
         </p>
       </div>
 
-      <div className="grid gap-2">
-        <label className="label">Criança ativa</label>
-        <select
-          className="input"
-          value={childId}
-          onChange={(e) => {
-            setChildId(e.target.value);
-            setConversationId("");
-            setMessages([]);
-          }}
-        >
-          {children.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {conversations.length > 0 ? (
-        <div className="flex gap-2 overflow-x-auto">
-          <button
-            className="chip whitespace-nowrap"
-            onClick={() => {
-              setConversationId("");
-              setMessages([]);
-            }}
-          >
-            Nova
-          </button>
-          {conversations.map((c) => (
-            <button key={c.id} className="chip whitespace-nowrap" onClick={() => openConversation(c.id)}>
-              {c.title}
-            </button>
-          ))}
+      {children.length === 0 ? (
+        <div className="card space-y-3 p-4">
+          <p className="text-sm text-[var(--muted)]">Cadastre uma criança em Perfis para conversar.</p>
+          <a href="/app/criancas" className="btn btn-primary">
+            Criar perfil
+          </a>
         </div>
-      ) : null}
-
-      <div className="card flex min-h-80 flex-1 flex-col gap-3 overflow-y-auto p-4">
-        {selectedChild ? (
-          <p className="text-xs font-bold text-[var(--brand)]">Contexto: {selectedChild.name}</p>
-        ) : (
-          <p className="text-sm text-[var(--muted)]">Cadastre uma criança para conversar.</p>
-        )}
-        {messages.map((m) => (
-          <div
-            key={m.id + m.content.slice(0, 12)}
-            className={`max-w-[90%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap ${
-              m.role === "user"
-                ? "ml-auto bg-[var(--brand)] text-white"
-                : "bg-[var(--brand-soft)] text-[var(--ink)]"
-            }`}
-          >
-            {m.content}
+      ) : (
+        <>
+          <div className="card space-y-2 p-4">
+            <div className="flex items-center justify-between gap-2">
+              <p className="label mb-0">Criança ativa</p>
+              <ClearChatButton childId={childId} conversationId={conversationId || undefined} />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {children.map((c) => (
+                <a
+                  key={c.id}
+                  href={`/app/chat?child=${c.id}`}
+                  className={`chip min-h-11 ${
+                    c.id === childId ? "!bg-[var(--brand)] !text-white" : ""
+                  }`}
+                >
+                  {c.name}
+                </a>
+              ))}
+              {conversationId ? (
+                <a href={`/app/chat?child=${childId}`} className="chip min-h-11">
+                  Nova conversa
+                </a>
+              ) : null}
+            </div>
           </div>
-        ))}
-      </div>
 
-      {error ? <p className="text-sm text-[var(--danger)]">{error}</p> : null}
+          <div className="card flex min-h-80 flex-1 flex-col gap-3 overflow-y-auto p-4">
+            {selectedChild ? (
+              <p className="text-xs font-bold text-[var(--brand)]">Contexto: {selectedChild.name}</p>
+            ) : null}
 
-      <form onSubmit={send} className="flex gap-2">
-        <input
-          className="input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Pergunte sobre seletividade, sinais, escada..."
-          disabled={!childId || loading}
-        />
-        <button className="btn btn-primary" disabled={loading || !childId}>
-          {loading ? "..." : "Enviar"}
-        </button>
-      </form>
+            {messages.length === 0 ? (
+              <div className="space-y-3">
+                <p className="text-sm font-semibold">Perguntas frequentes do portfólio:</p>
+                <div className="flex flex-col gap-2">
+                  {SUGGESTIONS.map((s) => (
+                    <form key={s} action="/api/chat/ask" method="post">
+                      <input type="hidden" name="childId" value={childId} />
+                      <input type="hidden" name="content" value={s} />
+                      <button
+                        type="submit"
+                        className="w-full rounded-2xl border border-[var(--line)] bg-[var(--bg-soft)] px-3 py-3 text-left text-sm font-semibold text-[var(--brand-deep)]"
+                      >
+                        {s}
+                      </button>
+                    </form>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {messages.map((m) => (
+              <ChatMessageBubble key={m.id} role={m.role} content={m.content} />
+            ))}
+          </div>
+
+          {error ? <p className="text-sm text-[var(--danger)]">{error}</p> : null}
+
+          <ChatVoiceControls childId={childId} conversationId={conversationId || undefined} />
+
+          <form action="/api/chat/ask" method="post" className="card space-y-3 p-4">
+            <input type="hidden" name="childId" value={childId} />
+            {conversationId ? (
+              <input type="hidden" name="conversationId" value={conversationId} />
+            ) : null}
+            <label className="label">Sua pergunta (texto)</label>
+            <textarea
+              className="input min-h-28"
+              name="content"
+              placeholder="Ex.: Por que ânsia só de ver o alimento? (somente texto)"
+              required
+            />
+            <button className="btn btn-primary min-h-12 w-full text-base" type="submit">
+              Perguntar à TIA Nutri
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 }

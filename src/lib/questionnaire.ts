@@ -4,6 +4,13 @@ export type Question = {
   options: { label: string; score: number }[];
 };
 
+const SCALE_FREQ = [
+  { label: "Raramente / não", score: 0 },
+  { label: "Às vezes", score: 1 },
+  { label: "Frequentemente", score: 2 },
+  { label: "Quase sempre", score: 3 },
+];
+
 export const SELECTIVITY_QUESTIONS: Question[] = [
   {
     id: "q1",
@@ -17,13 +24,8 @@ export const SELECTIVITY_QUESTIONS: Question[] = [
   },
   {
     id: "q2",
-    text: "A criança recusa alimentos por textura (ex.: cremoso, crocante, fibroso)?",
-    options: [
-      { label: "Raramente", score: 0 },
-      { label: "Às vezes", score: 1 },
-      { label: "Frequentemente", score: 2 },
-      { label: "Quase sempre", score: 3 },
-    ],
+    text: "A criança recusa alimentos por textura (cremoso, crocante, fibroso, pegajoso)?",
+    options: SCALE_FREQ,
   },
   {
     id: "q3",
@@ -48,12 +50,7 @@ export const SELECTIVITY_QUESTIONS: Question[] = [
   {
     id: "q5",
     text: "As refeições geram conflito ou estresse familiar frequente?",
-    options: [
-      { label: "Raramente", score: 0 },
-      { label: "Às vezes", score: 1 },
-      { label: "Frequentemente", score: 2 },
-      { label: "Quase sempre", score: 3 },
-    ],
+    options: SCALE_FREQ,
   },
   {
     id: "q6",
@@ -85,17 +82,63 @@ export const SELECTIVITY_QUESTIONS: Question[] = [
       { label: "Importantes", score: 3 },
     ],
   },
+  {
+    id: "q9",
+    text: "A criança aceita só marcas ou embalagens específicas do mesmo alimento?",
+    options: SCALE_FREQ,
+  },
+  {
+    id: "q10",
+    text: "Evita misturas (molhos, pedaços juntos, pratos combinados)?",
+    options: SCALE_FREQ,
+  },
+  {
+    id: "q11",
+    text: "Prefere alimentos secos/crocantes e recusa úmidos/pegajosos (ou o contrário de forma rígida)?",
+    options: [
+      { label: "Não há padrão rígido", score: 0 },
+      { label: "Leve preferência", score: 1 },
+      { label: "Preferência clara", score: 2 },
+      { label: "Recusa intensa do tipo oposto", score: 3 },
+    ],
+  },
+  {
+    id: "q12",
+    text: "Precisa de muitos lembretes ou foge da mesa (atenção / funções executivas na refeição)?",
+    options: SCALE_FREQ,
+  },
+  {
+    id: "q13",
+    text: "Mudança pequena no alimento (outra marca, corte diferente) gera recusa forte?",
+    options: SCALE_FREQ,
+  },
+  {
+    id: "q14",
+    text: "Há preocupação com variedade nutricional (poucos grupos alimentares no dia a dia)?",
+    options: [
+      { label: "Variedade adequada", score: 0 },
+      { label: "Um pouco restrita", score: 1 },
+      { label: "Bastante restrita", score: 2 },
+      { label: "Muito restrita", score: 3 },
+    ],
+  },
+  {
+    id: "q15",
+    text: "Ambiente da refeição (barulho, cheiros, luz) piora a aceitação?",
+    options: SCALE_FREQ,
+  },
 ];
 
 export function summarizeSelectivityScore(score: number): { level: string; summary: string } {
-  if (score <= 6) {
+  // 15 questions × max 3 = 45
+  if (score <= 10) {
     return {
       level: "Baixa preocupação imediata",
       summary:
         "Sinais leves. Mantenha exposição positiva sem pressão. Este questionário é apenas investigação inicial e não substitui avaliação profissional.",
     };
   }
-  if (score <= 14) {
+  if (score <= 24) {
     return {
       level: "Atenção moderada",
       summary:

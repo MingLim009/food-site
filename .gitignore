@@ -44,3 +44,28 @@ yarn-error.log*
 next-env.d.ts
 
 cookies.txt
+.vercel
+/public/generated
+# client upload scratch (não versionar)
+/_client-upload
+
+# local scratch / temp
+c.txt
+hdr.txt
+merge-redir.txt
+merge.html
+tmp-*.html
+tmp-*.mp4
+public/tmp-client-video.mp4
+public/brand/capa-b64.txt
+public/brand/capa-chunks.json
+public/brand/chunk-*.txt
+public/brand/inject-capa.js
+public/brand/cdp-payload.json
+public/brand/upload-*.png
+tmp-video-frames/
+
+scripts/upload-monetizze-capa.mjs
+scripts/fix-monetizze-access.mjs
+public/brand/dz-opts.txt
+public/brand/upload-capa.js

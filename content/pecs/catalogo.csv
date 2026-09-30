@@ -1,0 +1,73 @@
+﻿id,categoria,rotulo,arquivo_svg,arquivo_png,uso
+CAA001,Comunicação essencial,EU QUERO,cartoes_svg/CAA001.svg,cartoes_png/CAA001.png,escolha / pedido
+CAA002,Comunicação essencial,NÃO QUERO,cartoes_svg/CAA002.svg,cartoes_png/CAA002.png,escolha / pedido
+CAA003,Comunicação essencial,MAIS,cartoes_svg/CAA003.svg,cartoes_png/CAA003.png,escolha / pedido
+CAA004,Comunicação essencial,ACABOU,cartoes_svg/CAA004.svg,cartoes_png/CAA004.png,escolha / pedido
+CAA005,Comunicação essencial,ESCOLHER,cartoes_svg/CAA005.svg,cartoes_png/CAA005.png,escolha / pedido
+CAA006,Comunicação essencial,SIM,cartoes_svg/CAA006.svg,cartoes_png/CAA006.png,escolha / pedido
+CAA007,Comunicação essencial,NÃO,cartoes_svg/CAA007.svg,cartoes_png/CAA007.png,escolha / pedido
+CAA008,Comunicação essencial,AJUDA,cartoes_svg/CAA008.svg,cartoes_png/CAA008.png,escolha / pedido
+CAA009,Comunicação essencial,ESPERAR,cartoes_svg/CAA009.svg,cartoes_png/CAA009.png,escolha / pedido
+CAA010,Comunicação essencial,OUTRO,cartoes_svg/CAA010.svg,cartoes_png/CAA010.png,escolha / pedido
+CAA011,Comunicação essencial,IGUAL,cartoes_svg/CAA011.svg,cartoes_png/CAA011.png,escolha / pedido
+CAA012,Comunicação essencial,DIFERENTE,cartoes_svg/CAA012.svg,cartoes_png/CAA012.png,escolha / pedido
+CAA013,Necessidades e sensações,FOME,cartoes_svg/CAA013.svg,cartoes_png/CAA013.png,expressão / rotina
+CAA014,Necessidades e sensações,SEDE,cartoes_svg/CAA014.svg,cartoes_png/CAA014.png,expressão / rotina
+CAA015,Necessidades e sensações,SACIEDADE,cartoes_svg/CAA015.svg,cartoes_png/CAA015.png,expressão / rotina
+CAA016,Necessidades e sensações,DOR NA BARRIGA,cartoes_svg/CAA016.svg,cartoes_png/CAA016.png,expressão / rotina
+CAA017,Necessidades e sensações,ENJOO,cartoes_svg/CAA017.svg,cartoes_png/CAA017.png,expressão / rotina
+CAA018,Necessidades e sensações,CHEIRO FORTE,cartoes_svg/CAA018.svg,cartoes_png/CAA018.png,expressão / rotina
+CAA019,Necessidades e sensações,MUITO QUENTE,cartoes_svg/CAA019.svg,cartoes_png/CAA019.png,expressão / rotina
+CAA020,Necessidades e sensações,MUITO FRIO,cartoes_svg/CAA020.svg,cartoes_png/CAA020.png,expressão / rotina
+CAA021,Necessidades e sensações,CROCANTE,cartoes_svg/CAA021.svg,cartoes_png/CAA021.png,expressão / rotina
+CAA022,Necessidades e sensações,MACIO,cartoes_svg/CAA022.svg,cartoes_png/CAA022.png,expressão / rotina
+CAA023,Necessidades e sensações,MOLHADO,cartoes_svg/CAA023.svg,cartoes_png/CAA023.png,expressão / rotina
+CAA024,Necessidades e sensações,SECO,cartoes_svg/CAA024.svg,cartoes_png/CAA024.png,expressão / rotina
+CAA025,Necessidades e sensações,MISTURADO,cartoes_svg/CAA025.svg,cartoes_png/CAA025.png,expressão / rotina
+CAA026,Necessidades e sensações,SEPARADO,cartoes_svg/CAA026.svg,cartoes_png/CAA026.png,expressão / rotina
+CAA027,Ações na refeição,OLHAR,cartoes_svg/CAA027.svg,cartoes_png/CAA027.png,expressão / rotina
+CAA028,Ações na refeição,CHEIRAR,cartoes_svg/CAA028.svg,cartoes_png/CAA028.png,expressão / rotina
+CAA029,Ações na refeição,TOCAR,cartoes_svg/CAA029.svg,cartoes_png/CAA029.png,expressão / rotina
+CAA030,Ações na refeição,LAMBER,cartoes_svg/CAA030.svg,cartoes_png/CAA030.png,expressão / rotina
+CAA031,Ações na refeição,PROVAR,cartoes_svg/CAA031.svg,cartoes_png/CAA031.png,expressão / rotina
+CAA032,Ações na refeição,MASTIGAR,cartoes_svg/CAA032.svg,cartoes_png/CAA032.png,expressão / rotina
+CAA033,Ações na refeição,ENGOLIR,cartoes_svg/CAA033.svg,cartoes_png/CAA033.png,expressão / rotina
+CAA034,Ações na refeição,BEBER,cartoes_svg/CAA034.svg,cartoes_png/CAA034.png,expressão / rotina
+CAA035,Ações na refeição,PAUSA,cartoes_svg/CAA035.svg,cartoes_png/CAA035.png,expressão / rotina
+CAA036,Ações na refeição,LAVAR AS MÃOS,cartoes_svg/CAA036.svg,cartoes_png/CAA036.png,expressão / rotina
+CAA037,Ações na refeição,SENTAR,cartoes_svg/CAA037.svg,cartoes_png/CAA037.png,expressão / rotina
+CAA038,Ações na refeição,LEVANTAR,cartoes_svg/CAA038.svg,cartoes_png/CAA038.png,expressão / rotina
+CAA039,Bebidas,ÁGUA,cartoes_svg/CAA039.svg,cartoes_png/CAA039.png,escolha / pedido
+CAA040,Bebidas,LEITE,cartoes_svg/CAA040.svg,cartoes_png/CAA040.png,escolha / pedido
+CAA041,Bebidas,BEBIDA VEGETAL,cartoes_svg/CAA041.svg,cartoes_png/CAA041.png,escolha / pedido
+CAA042,Bebidas,SUCO,cartoes_svg/CAA042.svg,cartoes_png/CAA042.png,escolha / pedido
+CAA043,Bebidas,VITAMINA,cartoes_svg/CAA043.svg,cartoes_png/CAA043.png,escolha / pedido
+CAA044,Bebidas,IOGURTE,cartoes_svg/CAA044.svg,cartoes_png/CAA044.png,escolha / pedido
+CAA045,Frutas,BANANA,cartoes_svg/CAA045.svg,cartoes_png/CAA045.png,escolha / pedido
+CAA046,Frutas,MAÇÃ,cartoes_svg/CAA046.svg,cartoes_png/CAA046.png,escolha / pedido
+CAA047,Frutas,MORANGO,cartoes_svg/CAA047.svg,cartoes_png/CAA047.png,escolha / pedido
+CAA048,Frutas,MANGA,cartoes_svg/CAA048.svg,cartoes_png/CAA048.png,escolha / pedido
+CAA049,Frutas,MELANCIA,cartoes_svg/CAA049.svg,cartoes_png/CAA049.png,escolha / pedido
+CAA050,Frutas,UVA,cartoes_svg/CAA050.svg,cartoes_png/CAA050.png,escolha / pedido
+CAA051,Frutas,PERA,cartoes_svg/CAA051.svg,cartoes_png/CAA051.png,escolha / pedido
+CAA052,Frutas,LARANJA,cartoes_svg/CAA052.svg,cartoes_png/CAA052.png,escolha / pedido
+CAA053,Verduras e folhosos,CENOURA,cartoes_svg/CAA053.svg,cartoes_png/CAA053.png,escolha / pedido
+CAA054,Verduras e folhosos,BRÓCOLIS,cartoes_svg/CAA054.svg,cartoes_png/CAA054.png,escolha / pedido
+CAA055,Verduras e folhosos,ABÓBORA,cartoes_svg/CAA055.svg,cartoes_png/CAA055.png,escolha / pedido
+CAA056,Verduras e folhosos,BATATA,cartoes_svg/CAA056.svg,cartoes_png/CAA056.png,escolha / pedido
+CAA057,Verduras e folhosos,ALFACE,cartoes_svg/CAA057.svg,cartoes_png/CAA057.png,escolha / pedido
+CAA058,Verduras e folhosos,TOMATE,cartoes_svg/CAA058.svg,cartoes_png/CAA058.png,escolha / pedido
+CAA059,Refeições e proteínas,ARROZ,cartoes_svg/CAA059.svg,cartoes_png/CAA059.png,escolha / pedido
+CAA060,Refeições e proteínas,FEIJÃO,cartoes_svg/CAA060.svg,cartoes_png/CAA060.png,escolha / pedido
+CAA061,Refeições e proteínas,MACARRÃO,cartoes_svg/CAA061.svg,cartoes_png/CAA061.png,escolha / pedido
+CAA062,Refeições e proteínas,SOPA,cartoes_svg/CAA062.svg,cartoes_png/CAA062.png,escolha / pedido
+CAA063,Refeições e proteínas,PÃO,cartoes_svg/CAA063.svg,cartoes_png/CAA063.png,escolha / pedido
+CAA064,Refeições e proteínas,PASTEL,cartoes_svg/CAA064.svg,cartoes_png/CAA064.png,escolha / pedido
+CAA065,Refeições e proteínas,NUGGET,cartoes_svg/CAA065.svg,cartoes_png/CAA065.png,escolha / pedido
+CAA066,Refeições e proteínas,FRANGO,cartoes_svg/CAA066.svg,cartoes_png/CAA066.png,escolha / pedido
+CAA067,Refeições e proteínas,CARNE BOVINA,cartoes_svg/CAA067.svg,cartoes_png/CAA067.png,escolha / pedido
+CAA068,Refeições e proteínas,CARNE SUÍNA,cartoes_svg/CAA068.svg,cartoes_png/CAA068.png,escolha / pedido
+CAA069,Refeições e proteínas,PEIXE,cartoes_svg/CAA069.svg,cartoes_png/CAA069.png,escolha / pedido
+CAA070,Refeições e proteínas,OVO,cartoes_svg/CAA070.svg,cartoes_png/CAA070.png,escolha / pedido
+CAA071,Refeições e proteínas,QUEIJO,cartoes_svg/CAA071.svg,cartoes_png/CAA071.png,escolha / pedido
+CAA072,Refeições e proteínas,HAMBÚRGUER,cartoes_svg/CAA072.svg,cartoes_png/CAA072.png,escolha / pedido

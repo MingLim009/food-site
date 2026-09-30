@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { toJsonArray } from "@/lib/utils";
+import { DEFAULT_AVATAR } from "@/lib/games";
 
 export async function GET() {
   try {
@@ -29,6 +30,16 @@ const schema = z.object({
   heightCm: z.number().optional().nullable(),
   weightKg: z.number().optional().nullable(),
   notes: z.string().optional().nullable(),
+  avatar: z
+    .object({
+      skin: z.string(),
+      hair: z.string(),
+      hairColor: z.string(),
+      eyes: z.string(),
+      outfit: z.string(),
+      accessory: z.string(),
+    })
+    .optional(),
 });
 
 export async function POST(req: Request) {
@@ -49,6 +60,7 @@ export async function POST(req: Request) {
         heightCm: body.heightCm ?? null,
         weightKg: body.weightKg ?? null,
         notes: body.notes || null,
+        avatar: JSON.stringify(body.avatar || DEFAULT_AVATAR),
       },
     });
     return NextResponse.json({ child });

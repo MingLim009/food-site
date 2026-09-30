@@ -1,0 +1,578 @@
+[
+  {
+    "id": "CAA001",
+    "categoria": "Comunicação essencial",
+    "rotulo": "EU QUERO",
+    "arquivo_svg": "cartoes_svg/CAA001.svg",
+    "arquivo_png": "cartoes_png/CAA001.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA002",
+    "categoria": "Comunicação essencial",
+    "rotulo": "NÃO QUERO",
+    "arquivo_svg": "cartoes_svg/CAA002.svg",
+    "arquivo_png": "cartoes_png/CAA002.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA003",
+    "categoria": "Comunicação essencial",
+    "rotulo": "MAIS",
+    "arquivo_svg": "cartoes_svg/CAA003.svg",
+    "arquivo_png": "cartoes_png/CAA003.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA004",
+    "categoria": "Comunicação essencial",
+    "rotulo": "ACABOU",
+    "arquivo_svg": "cartoes_svg/CAA004.svg",
+    "arquivo_png": "cartoes_png/CAA004.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA005",
+    "categoria": "Comunicação essencial",
+    "rotulo": "ESCOLHER",
+    "arquivo_svg": "cartoes_svg/CAA005.svg",
+    "arquivo_png": "cartoes_png/CAA005.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA006",
+    "categoria": "Comunicação essencial",
+    "rotulo": "SIM",
+    "arquivo_svg": "cartoes_svg/CAA006.svg",
+    "arquivo_png": "cartoes_png/CAA006.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA007",
+    "categoria": "Comunicação essencial",
+    "rotulo": "NÃO",
+    "arquivo_svg": "cartoes_svg/CAA007.svg",
+    "arquivo_png": "cartoes_png/CAA007.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA008",
+    "categoria": "Comunicação essencial",
+    "rotulo": "AJUDA",
+    "arquivo_svg": "cartoes_svg/CAA008.svg",
+    "arquivo_png": "cartoes_png/CAA008.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA009",
+    "categoria": "Comunicação essencial",
+    "rotulo": "ESPERAR",
+    "arquivo_svg": "cartoes_svg/CAA009.svg",
+    "arquivo_png": "cartoes_png/CAA009.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA010",
+    "categoria": "Comunicação essencial",
+    "rotulo": "OUTRO",
+    "arquivo_svg": "cartoes_svg/CAA010.svg",
+    "arquivo_png": "cartoes_png/CAA010.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA011",
+    "categoria": "Comunicação essencial",
+    "rotulo": "IGUAL",
+    "arquivo_svg": "cartoes_svg/CAA011.svg",
+    "arquivo_png": "cartoes_png/CAA011.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA012",
+    "categoria": "Comunicação essencial",
+    "rotulo": "DIFERENTE",
+    "arquivo_svg": "cartoes_svg/CAA012.svg",
+    "arquivo_png": "cartoes_png/CAA012.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA013",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "FOME",
+    "arquivo_svg": "cartoes_svg/CAA013.svg",
+    "arquivo_png": "cartoes_png/CAA013.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA014",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "SEDE",
+    "arquivo_svg": "cartoes_svg/CAA014.svg",
+    "arquivo_png": "cartoes_png/CAA014.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA015",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "SACIEDADE",
+    "arquivo_svg": "cartoes_svg/CAA015.svg",
+    "arquivo_png": "cartoes_png/CAA015.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA016",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "DOR NA BARRIGA",
+    "arquivo_svg": "cartoes_svg/CAA016.svg",
+    "arquivo_png": "cartoes_png/CAA016.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA017",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "ENJOO",
+    "arquivo_svg": "cartoes_svg/CAA017.svg",
+    "arquivo_png": "cartoes_png/CAA017.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA018",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "CHEIRO FORTE",
+    "arquivo_svg": "cartoes_svg/CAA018.svg",
+    "arquivo_png": "cartoes_png/CAA018.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA019",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "MUITO QUENTE",
+    "arquivo_svg": "cartoes_svg/CAA019.svg",
+    "arquivo_png": "cartoes_png/CAA019.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA020",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "MUITO FRIO",
+    "arquivo_svg": "cartoes_svg/CAA020.svg",
+    "arquivo_png": "cartoes_png/CAA020.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA021",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "CROCANTE",
+    "arquivo_svg": "cartoes_svg/CAA021.svg",
+    "arquivo_png": "cartoes_png/CAA021.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA022",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "MACIO",
+    "arquivo_svg": "cartoes_svg/CAA022.svg",
+    "arquivo_png": "cartoes_png/CAA022.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA023",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "MOLHADO",
+    "arquivo_svg": "cartoes_svg/CAA023.svg",
+    "arquivo_png": "cartoes_png/CAA023.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA024",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "SECO",
+    "arquivo_svg": "cartoes_svg/CAA024.svg",
+    "arquivo_png": "cartoes_png/CAA024.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA025",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "MISTURADO",
+    "arquivo_svg": "cartoes_svg/CAA025.svg",
+    "arquivo_png": "cartoes_png/CAA025.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA026",
+    "categoria": "Necessidades e sensações",
+    "rotulo": "SEPARADO",
+    "arquivo_svg": "cartoes_svg/CAA026.svg",
+    "arquivo_png": "cartoes_png/CAA026.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA027",
+    "categoria": "Ações na refeição",
+    "rotulo": "OLHAR",
+    "arquivo_svg": "cartoes_svg/CAA027.svg",
+    "arquivo_png": "cartoes_png/CAA027.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA028",
+    "categoria": "Ações na refeição",
+    "rotulo": "CHEIRAR",
+    "arquivo_svg": "cartoes_svg/CAA028.svg",
+    "arquivo_png": "cartoes_png/CAA028.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA029",
+    "categoria": "Ações na refeição",
+    "rotulo": "TOCAR",
+    "arquivo_svg": "cartoes_svg/CAA029.svg",
+    "arquivo_png": "cartoes_png/CAA029.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA030",
+    "categoria": "Ações na refeição",
+    "rotulo": "LAMBER",
+    "arquivo_svg": "cartoes_svg/CAA030.svg",
+    "arquivo_png": "cartoes_png/CAA030.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA031",
+    "categoria": "Ações na refeição",
+    "rotulo": "PROVAR",
+    "arquivo_svg": "cartoes_svg/CAA031.svg",
+    "arquivo_png": "cartoes_png/CAA031.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA032",
+    "categoria": "Ações na refeição",
+    "rotulo": "MASTIGAR",
+    "arquivo_svg": "cartoes_svg/CAA032.svg",
+    "arquivo_png": "cartoes_png/CAA032.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA033",
+    "categoria": "Ações na refeição",
+    "rotulo": "ENGOLIR",
+    "arquivo_svg": "cartoes_svg/CAA033.svg",
+    "arquivo_png": "cartoes_png/CAA033.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA034",
+    "categoria": "Ações na refeição",
+    "rotulo": "BEBER",
+    "arquivo_svg": "cartoes_svg/CAA034.svg",
+    "arquivo_png": "cartoes_png/CAA034.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA035",
+    "categoria": "Ações na refeição",
+    "rotulo": "PAUSA",
+    "arquivo_svg": "cartoes_svg/CAA035.svg",
+    "arquivo_png": "cartoes_png/CAA035.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA036",
+    "categoria": "Ações na refeição",
+    "rotulo": "LAVAR AS MÃOS",
+    "arquivo_svg": "cartoes_svg/CAA036.svg",
+    "arquivo_png": "cartoes_png/CAA036.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA037",
+    "categoria": "Ações na refeição",
+    "rotulo": "SENTAR",
+    "arquivo_svg": "cartoes_svg/CAA037.svg",
+    "arquivo_png": "cartoes_png/CAA037.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA038",
+    "categoria": "Ações na refeição",
+    "rotulo": "LEVANTAR",
+    "arquivo_svg": "cartoes_svg/CAA038.svg",
+    "arquivo_png": "cartoes_png/CAA038.png",
+    "uso": "expressão / rotina"
+  },
+  {
+    "id": "CAA039",
+    "categoria": "Bebidas",
+    "rotulo": "ÁGUA",
+    "arquivo_svg": "cartoes_svg/CAA039.svg",
+    "arquivo_png": "cartoes_png/CAA039.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA040",
+    "categoria": "Bebidas",
+    "rotulo": "LEITE",
+    "arquivo_svg": "cartoes_svg/CAA040.svg",
+    "arquivo_png": "cartoes_png/CAA040.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA041",
+    "categoria": "Bebidas",
+    "rotulo": "BEBIDA VEGETAL",
+    "arquivo_svg": "cartoes_svg/CAA041.svg",
+    "arquivo_png": "cartoes_png/CAA041.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA042",
+    "categoria": "Bebidas",
+    "rotulo": "SUCO",
+    "arquivo_svg": "cartoes_svg/CAA042.svg",
+    "arquivo_png": "cartoes_png/CAA042.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA043",
+    "categoria": "Bebidas",
+    "rotulo": "VITAMINA",
+    "arquivo_svg": "cartoes_svg/CAA043.svg",
+    "arquivo_png": "cartoes_png/CAA043.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA044",
+    "categoria": "Bebidas",
+    "rotulo": "IOGURTE",
+    "arquivo_svg": "cartoes_svg/CAA044.svg",
+    "arquivo_png": "cartoes_png/CAA044.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA045",
+    "categoria": "Frutas",
+    "rotulo": "BANANA",
+    "arquivo_svg": "cartoes_svg/CAA045.svg",
+    "arquivo_png": "cartoes_png/CAA045.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA046",
+    "categoria": "Frutas",
+    "rotulo": "MAÇÃ",
+    "arquivo_svg": "cartoes_svg/CAA046.svg",
+    "arquivo_png": "cartoes_png/CAA046.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA047",
+    "categoria": "Frutas",
+    "rotulo": "MORANGO",
+    "arquivo_svg": "cartoes_svg/CAA047.svg",
+    "arquivo_png": "cartoes_png/CAA047.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA048",
+    "categoria": "Frutas",
+    "rotulo": "MANGA",
+    "arquivo_svg": "cartoes_svg/CAA048.svg",
+    "arquivo_png": "cartoes_png/CAA048.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA049",
+    "categoria": "Frutas",
+    "rotulo": "MELANCIA",
+    "arquivo_svg": "cartoes_svg/CAA049.svg",
+    "arquivo_png": "cartoes_png/CAA049.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA050",
+    "categoria": "Frutas",
+    "rotulo": "UVA",
+    "arquivo_svg": "cartoes_svg/CAA050.svg",
+    "arquivo_png": "cartoes_png/CAA050.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA051",
+    "categoria": "Frutas",
+    "rotulo": "PERA",
+    "arquivo_svg": "cartoes_svg/CAA051.svg",
+    "arquivo_png": "cartoes_png/CAA051.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA052",
+    "categoria": "Frutas",
+    "rotulo": "LARANJA",
+    "arquivo_svg": "cartoes_svg/CAA052.svg",
+    "arquivo_png": "cartoes_png/CAA052.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA053",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "CENOURA",
+    "arquivo_svg": "cartoes_svg/CAA053.svg",
+    "arquivo_png": "cartoes_png/CAA053.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA054",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "BRÓCOLIS",
+    "arquivo_svg": "cartoes_svg/CAA054.svg",
+    "arquivo_png": "cartoes_png/CAA054.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA055",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "ABÓBORA",
+    "arquivo_svg": "cartoes_svg/CAA055.svg",
+    "arquivo_png": "cartoes_png/CAA055.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA056",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "BATATA",
+    "arquivo_svg": "cartoes_svg/CAA056.svg",
+    "arquivo_png": "cartoes_png/CAA056.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA057",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "ALFACE",
+    "arquivo_svg": "cartoes_svg/CAA057.svg",
+    "arquivo_png": "cartoes_png/CAA057.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA058",
+    "categoria": "Verduras e folhosos",
+    "rotulo": "TOMATE",
+    "arquivo_svg": "cartoes_svg/CAA058.svg",
+    "arquivo_png": "cartoes_png/CAA058.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA059",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "ARROZ",
+    "arquivo_svg": "cartoes_svg/CAA059.svg",
+    "arquivo_png": "cartoes_png/CAA059.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA060",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "FEIJÃO",
+    "arquivo_svg": "cartoes_svg/CAA060.svg",
+    "arquivo_png": "cartoes_png/CAA060.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA061",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "MACARRÃO",
+    "arquivo_svg": "cartoes_svg/CAA061.svg",
+    "arquivo_png": "cartoes_png/CAA061.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA062",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "SOPA",
+    "arquivo_svg": "cartoes_svg/CAA062.svg",
+    "arquivo_png": "cartoes_png/CAA062.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA063",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "PÃO",
+    "arquivo_svg": "cartoes_svg/CAA063.svg",
+    "arquivo_png": "cartoes_png/CAA063.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA064",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "PASTEL",
+    "arquivo_svg": "cartoes_svg/CAA064.svg",
+    "arquivo_png": "cartoes_png/CAA064.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA065",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "NUGGET",
+    "arquivo_svg": "cartoes_svg/CAA065.svg",
+    "arquivo_png": "cartoes_png/CAA065.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA066",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "FRANGO",
+    "arquivo_svg": "cartoes_svg/CAA066.svg",
+    "arquivo_png": "cartoes_png/CAA066.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA067",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "CARNE BOVINA",
+    "arquivo_svg": "cartoes_svg/CAA067.svg",
+    "arquivo_png": "cartoes_png/CAA067.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA068",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "CARNE SUÍNA",
+    "arquivo_svg": "cartoes_svg/CAA068.svg",
+    "arquivo_png": "cartoes_png/CAA068.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA069",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "PEIXE",
+    "arquivo_svg": "cartoes_svg/CAA069.svg",
+    "arquivo_png": "cartoes_png/CAA069.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA070",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "OVO",
+    "arquivo_svg": "cartoes_svg/CAA070.svg",
+    "arquivo_png": "cartoes_png/CAA070.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA071",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "QUEIJO",
+    "arquivo_svg": "cartoes_svg/CAA071.svg",
+    "arquivo_png": "cartoes_png/CAA071.png",
+    "uso": "escolha / pedido"
+  },
+  {
+    "id": "CAA072",
+    "categoria": "Refeições e proteínas",
+    "rotulo": "HAMBÚRGUER",
+    "arquivo_svg": "cartoes_svg/CAA072.svg",
+    "arquivo_png": "cartoes_png/CAA072.png",
+    "uso": "escolha / pedido"
+  }
+]

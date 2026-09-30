@@ -1,133 +1,86 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { recipesForSeed, recipeCount } from "../src/lib/recipes-catalog";
+import { KNOWLEDGE_BASE, knowledgeCount } from "../src/lib/knowledge-base";
 
 const prisma = new PrismaClient();
 
-const knowledge = [
-  {
-    title: "Principais causas da seletividade em TEA",
-    category: "TEA",
-    tags: JSON.stringify(["tea", "seletividade", "causas", "sensorial"]),
-    content:
-      "Na TEA, a seletividade alimentar costuma relacionar-se a hipersensibilidade sensorial (textura, cheiro, temperatura, cor), necessidade de previsibilidade, padrões rígidos e, em alguns casos, dificuldades oral-motoras. A abordagem deve ser gradual, sem pressão coercitiva à mesa, respeitando o sistema nervoso da criança e integrando família e escola.",
-  },
-  {
-    title: "Principais causas da seletividade em TDAH",
-    category: "TDAH",
-    tags: JSON.stringify(["tdah", "seletividade", "atencao", "impulsividade"]),
-    content:
-      "No TDAH, a seletividade pode ligar-se a desatenção durante a refeição, busca por estímulos intensos (sabores fortes), impulsividade, dificuldade de permanecer à mesa e regulação emocional. Rotinas previsíveis, ambiente calmo e porções visuais claras ajudam. Não se trata de 'birra'; é regulação.",
-  },
-  {
-    title: "Sinais que a criança dá na seletividade",
-    category: "Sinais",
-    tags: JSON.stringify(["sinais", "recusa", "sensorial"]),
-    content:
-      "Sinais comuns: virar o rosto, engasgo antecipatório, náusea, choro, engolir saliva em excesso, empurrar o prato, aceitar só marcas específicas, preferir seco ou só líquido, recusar misturas. Observe o que ocorre antes da recusa (cheiro, visual, barulho do ambiente).",
-  },
-  {
-    title: "Escada do Comer — visão geral",
-    category: "Escada",
-    tags: JSON.stringify(["escada", "passos", "tolerar", "mastigar"]),
-    content:
-      "A Escada do Comer organiza o progresso do passo 1 (tolerar a presença do alimento) até o 26 (mastigar e comer de forma funcional). Cada alimento tem seu próprio degrau. Não se pula etapas por pressão. Celebrar microprogressos reduz ansiedade familiar.",
-  },
-  {
-    title: "Preferências por texturas, cores e formas",
-    category: "Sensorial",
-    tags: JSON.stringify(["textura", "cor", "forma"]),
-    content:
-      "Muitas crianças aceitam melhor alimentos crocantes OU pastosos, cores claras OU vibrantes, formatos previsíveis (palito, círculo). Mapear preferências permite escolher o próximo alimento da cadeia com menor carga sensorial.",
-  },
-  {
-    title: "Profissionais além do nutricionista",
-    category: "Rede",
-    tags: JSON.stringify(["to", "fono", "tps", "oral-motor"]),
-    content:
-      "Além do nutricionista: Terapeuta Ocupacional quando há sinais de Transtorno do Processamento Sensorial (TPS); Fonoaudiólogo para dificuldades oral-motoras (mastigação, deglutição, tônus); médico pediatra/gastro conforme sintomas sistêmicos. A TIA Nutri não substitui esses profissionais.",
-  },
-  {
-    title: "Vitaminas, minerais e aminoácidos na seletividade",
-    category: "Nutrientes",
-    tags: JSON.stringify(["vitaminas", "minerais", "aminoacidos"]),
-    content:
-      "Dietas muito restritas podem envolver risco de inadequação de ferro, zinco, cálcio, vitamina D, vitaminas do complexo B, ômega-3 e aminoácidos essenciais — entre outros. A plataforma NÃO informa quantidades. Avaliação laboratorial e suplementação, se necessária, é exclusiva de consulta.",
-  },
-  {
-    title: "Verminoses, leaky gut, má digestão e enzimas",
-    category: "Gastro",
-    tags: JSON.stringify(["verminose", "leaky gut", "enzimas", "digestao"]),
-    content:
-      "Queixas gastrointestinais (dor, gases, diarreia, constipação, desconforto após comer) merecem avaliação médica. Hipóteses como verminoses, aumento da permeabilidade intestinal (leaky gut), má digestão ou baixa de enzimas digestivas exigem investigação clínica — não automedicação nem protocolo pela TIA Nutri.",
-  },
-  {
-    title: "Disbiose, SIBO e SIFO — quando investigar",
-    category: "Gastro",
-    tags: JSON.stringify(["disbiose", "sibo", "sifo"]),
-    content:
-      "Investigar disbiose, SIBO ou SIFO quando há sintomas persistentes (inchaço, distensão, alteração do hábito intestinal, desconforto crônico) sob orientação médica especializada. A plataforma apenas educa sobre o conceito; exames e conduta são clínicos.",
-  },
-  {
-    title: "Antropometria educativa sem diagnóstico",
-    category: "Antropometria",
-    tags: JSON.stringify(["imc", "peso", "altura"]),
-    content:
-      "Peso e altura permitem calcular IMC aproximado (peso / altura²). Em crianças, a interpretação usa curvas de crescimento e percentis — isso é papel do profissional de saúde. Na plataforma, o IMC é apenas referência educativa, sem classificar desnutrição/obesidade como diagnóstico.",
-  },
-  {
-    title: "Limites clínicos da TIA Nutri",
-    category: "Seguranca",
-    tags: JSON.stringify(["limites", "lgpd", "seguranca", "tia nutri"]),
-    content:
-      "A TIA Nutri responde só sobre a criança do perfil ativo; não compara com outras crianças; não dá doses; não diagnostica; usa biblioteca especializada (RAG). Dados pessoais são tratados conforme LGPD, com finalidade de apoio educativo aos responsáveis legais.",
-  },
-];
+const knowledge = KNOWLEDGE_BASE;
 
-const recipes = [
-  {
-    title: "Palitinhos crocantes de batata-doce",
-    description: "Receita sensorial com foco em crocância e cor alaranjada.",
-    foodGroups: JSON.stringify(["tubérculos", "legumes"]),
-    textures: JSON.stringify(["crocante", "seco"]),
-    steps:
-      "1. Corte a batata-doce em palitos uniformes.\n2. Asse até ficar crocante por fora.\n3. Ofereça primeiro para olhar/tolerar, depois tocar.\n4. Pareie com um alimento seguro da criança.",
-    tips: "Mantenha o formato previsível. Sem pressão para morder no primeiro contato.",
-    minPlan: "PREMIUM",
-  },
-  {
-    title: "Smoothie rosa suave",
-    description: "Textura líquida homogênea com cor previsível.",
-    foodGroups: JSON.stringify(["frutas", "laticínios ou vegetais"]),
-    textures: JSON.stringify(["líquido", "liso"]),
-    steps:
-      "1. Bata fruta preferida até ficar totalmente lisa.\n2. Sirva em copo opaco se a cor for gatilho.\n3. Use canudo se ajudar no controle oral.\n4. Avance na Escada apenas se houver conforto.",
-    tips: "Evite pedaços. Homogeneidade reduz surpresa sensorial.",
-    minPlan: "PREMIUM",
-  },
-  {
-    title: "Panqueca neutra em formato círculo",
-    description: "Forma circular previsível, sabor neutro.",
-    foodGroups: JSON.stringify(["cereais", "ovos ou substituto"]),
-    textures: JSON.stringify(["macio", "úmido"]),
-    steps:
-      "1. Prepare massa simples e uniforme.\n2. Mantenha sempre o mesmo tamanho de círculo.\n3. Ofereça cortada em iguais se a criança preferir simetria.\n4. Introduza variação mínima depois de aceitação estável.",
-    tips: "Mudanças de forma só depois do passo consolidado.",
-    minPlan: "GOLD",
-  },
-];
+const recipes = recipesForSeed();
 
 const chains = [
+  {
+    title: "Da batata chips à batata cozida",
+    description: "Encadeamento crocante — mesma família, mudando formato e preparo.",
+    startFood: "Batata chips",
+    endFood: "Purê de batata",
+    steps: JSON.stringify([
+      { label: "Batata chips industrial", emoji: "🥔", bg: "#FFF3D6" },
+      { label: "Chips caseiros assados", emoji: "🫓", bg: "#FFE8B8" },
+      { label: "Batata em gomos assados", emoji: "🍟", bg: "#FFD9A0" },
+      { label: "Batata cozida em pedaços", emoji: "🥔", bg: "#F5E6C8" },
+      { label: "Batata + vagem no prato", emoji: "🫘", bg: "#E8F5D8" },
+      { label: "Purê de batata liso", emoji: "🥣", bg: "#F0E6D8" },
+    ]),
+    minPlan: "PREMIUM",
+  },
+  {
+    title: "Da cenoura crua à abóbora",
+    description: "Encadeamento pela cor laranja e perfil doce-suave.",
+    startFood: "Cenoura crua",
+    endFood: "Abóbora assada",
+    steps: JSON.stringify([
+      { label: "Cenoura em palitos", emoji: "🥕", bg: "#FFE8D0" },
+      { label: "Cenoura ralada", emoji: "🥗", bg: "#FFDCC0" },
+      { label: "Suco de cenoura", emoji: "🧃", bg: "#FFD0A8" },
+      { label: "Bolo / muffin de cenoura", emoji: "🧁", bg: "#F5C890" },
+      { label: "Sopa de abóbora", emoji: "🍲", bg: "#FFE0B0" },
+      { label: "Abóbora assada em pedaços", emoji: "🎃", bg: "#FFCC80" },
+    ]),
+    minPlan: "PREMIUM",
+  },
+  {
+    title: "Do nugget à carne moída",
+    description: "Da proteína empanada segura até formatos mais reais.",
+    startFood: "Nugget industrial",
+    endFood: "Carne moída",
+    steps: JSON.stringify([
+      { label: "Nugget industrial", emoji: "🍗", bg: "#FFE8E0" },
+      { label: "Frango empanado caseiro", emoji: "🥖", bg: "#FFD8CC" },
+      { label: "Tiras de frango grelhado", emoji: "🥩", bg: "#FFC8B8" },
+      { label: "Frango desfiado", emoji: "🍜", bg: "#F5D0C0" },
+      { label: "Peito em molho suave", emoji: "🍛", bg: "#E8D0C0" },
+      { label: "Carne moída temperada leve", emoji: "🥘", bg: "#E0C8B8" },
+    ]),
+    minPlan: "PREMIUM",
+  },
+  {
+    title: "Da banana à uva",
+    description: "Parte da fruta segura e avança por formatos parecidos.",
+    startFood: "Banana em rodelas",
+    endFood: "Uvas",
+    steps: JSON.stringify([
+      { label: "Banana em rodelas", emoji: "🍌", bg: "#FFF9C4" },
+      { label: "Panqueca de banana", emoji: "🥞", bg: "#FFF59D" },
+      { label: "Vitamina de banana", emoji: "🥤", bg: "#FFF176" },
+      { label: "Maçã em fatias", emoji: "🍎", bg: "#FFECB3" },
+      { label: "Morango inteiro / corte", emoji: "🍓", bg: "#FFCDD2" },
+      { label: "Uvas sem semente", emoji: "🍇", bg: "#E1BEE7" },
+    ]),
+    minPlan: "PREMIUM",
+  },
   {
     title: "Do biscoito seco ao torrado integral",
     description: "Encadeamento por textura crocante semelhante.",
     startFood: "Biscoito preferido",
     endFood: "Torrada integral fina",
     steps: JSON.stringify([
-      "Biscoito preferido (alimento seguro)",
-      "Mesmo biscoito em formato ligeiramente diferente",
-      "Biscoito de outra marca com textura parecida",
-      "Torrada clara muito fina",
-      "Torrada integral fina",
+      { label: "Biscoito preferido", emoji: "🍪", bg: "#FFF3D6" },
+      { label: "Mesmo biscoito outro formato", emoji: "🥠", bg: "#FFE8B8" },
+      { label: "Outra marca textura parecida", emoji: "🍘", bg: "#FFD9A0" },
+      { label: "Torrada clara bem fina", emoji: "🍞", bg: "#F5E6C8" },
+      { label: "Torrada integral fina", emoji: "🥖", bg: "#E8D8B8" },
     ]),
     minPlan: "PREMIUM",
   },
@@ -137,11 +90,11 @@ const chains = [
     startFood: "Iogurte liso aceito",
     endFood: "Fruta bem amassada",
     steps: JSON.stringify([
-      "Iogurte liso preferido",
-      "Iogurte com aroma sutil da fruta-alvo",
-      "Iogurte com 1 pitada de fruta peneirada",
-      "Fruta peneirada isolada em microporção",
-      "Fruta amassada",
+      { label: "Iogurte liso preferido", emoji: "🥛", bg: "#E3F2FD" },
+      { label: "Iogurte com aroma sutil", emoji: "🍶", bg: "#BBDEFB" },
+      { label: "Iogurte + pitada de fruta", emoji: "🍓", bg: "#FFE0E8" },
+      { label: "Fruta peneirada microporção", emoji: "🥄", bg: "#F8BBD0" },
+      { label: "Fruta amassada", emoji: "🍌", bg: "#FFF9C4" },
     ]),
     minPlan: "PREMIUM",
   },
@@ -199,6 +152,14 @@ async function main() {
       heightCm: 110,
       weightKg: 18.5,
       notes: "Melhor desempenho em ambiente calmo, sem pressão.",
+      avatar: JSON.stringify({
+        skin: "medio",
+        hair: "curto",
+        hairColor: "castanho",
+        eyes: "castanhos",
+        outfit: "camiseta",
+        accessory: "bone",
+      }),
     },
   });
 
@@ -217,6 +178,8 @@ async function main() {
   }
 
   console.log("Seed OK");
+  console.log(`Recipes with cartoon videos: ${recipeCount()}`);
+  console.log(`Knowledge chunks: ${knowledgeCount()}`);
   console.log("Parent: mae@demo.com / demo1234");
   console.log("Admin:  admin@eloalimentar.com / admin1234");
 }

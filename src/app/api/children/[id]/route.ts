@@ -38,6 +38,16 @@ const schema = z.object({
   heightCm: z.number().optional().nullable(),
   weightKg: z.number().optional().nullable(),
   notes: z.string().optional().nullable(),
+  avatar: z
+    .object({
+      skin: z.string(),
+      hair: z.string(),
+      hairColor: z.string(),
+      eyes: z.string(),
+      outfit: z.string(),
+      accessory: z.string(),
+    })
+    .optional(),
 });
 
 export async function PUT(req: Request, ctx: Ctx) {
@@ -70,6 +80,7 @@ export async function PUT(req: Request, ctx: Ctx) {
         heightCm: body.heightCm === undefined ? existing.heightCm : body.heightCm,
         weightKg: body.weightKg === undefined ? existing.weightKg : body.weightKg,
         notes: body.notes ?? existing.notes,
+        avatar: body.avatar ? JSON.stringify(body.avatar) : existing.avatar,
       },
     });
     return NextResponse.json({ child });

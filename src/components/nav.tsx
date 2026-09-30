@@ -1,23 +1,29 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Baby,
   BookOpen,
-  Home,
-  MessageCircle,
-  ListOrdered,
+  Briefcase,
+  Calendar,
   ClipboardList,
+  Gamepad2,
+  Home,
+  Lightbulb,
   Link2,
+  ListOrdered,
+  MessageCircle,
+  Pill,
+  Scale,
   Shield,
+  Brain,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const items = [
   { href: "/app", label: "Início", icon: Home },
   { href: "/app/chat", label: "TIA", icon: MessageCircle },
-  { href: "/app/criancas", label: "Perfis", icon: Baby },
+  { href: "/app/jogos", label: "Jogos", icon: Gamepad2 },
   { href: "/app/escada", label: "Escada", icon: ListOrdered },
   { href: "/app/mais", label: "Mais", icon: BookOpen },
 ];
@@ -25,32 +31,32 @@ const items = [
 export function BottomNav({ isAdmin }: { isAdmin?: boolean }) {
   const pathname = usePathname();
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[color-mix(in_oklab,var(--nav)_94%,transparent)] shadow-[0_-12px_32px_rgba(10,20,18,0.35)] backdrop-blur-xl">
-      <div className="mx-auto grid max-w-lg grid-cols-5 gap-1 px-2 pb-[env(safe-area-inset-bottom)] pt-2">
+    <nav className="bottom-nav" aria-label="Navegação principal">
+      <div className="mx-auto grid max-w-lg grid-cols-5 gap-0.5 px-2 pt-2 md:max-w-3xl lg:max-w-5xl">
         {items.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || (href !== "/app" && pathname.startsWith(href));
           return (
-            <Link
+            <a
               key={href}
               href={href}
               className={cn(
-                "flex flex-col items-center gap-1 rounded-2xl px-1 py-2 text-[11px] font-bold transition-colors",
+                "flex min-h-12 flex-col items-center justify-center gap-0.5 rounded-[0.75rem] px-1 py-1.5 text-[11px] font-semibold transition-colors",
                 active
-                  ? "bg-white/12 text-[var(--brand)]"
-                  : "text-[var(--muted)]"
+                  ? "bg-[var(--brand-soft)] text-[var(--brand-deep)]"
+                  : "text-[var(--muted)] hover:text-[var(--ink)]"
               )}
             >
               <Icon size={20} strokeWidth={active ? 2.4 : 2} />
               {label}
-            </Link>
+            </a>
           );
         })}
       </div>
       {isAdmin ? (
         <div className="absolute -top-10 right-3">
-          <Link href="/admin" className="chip inline-flex gap-1">
+          <a href="/admin" className="chip inline-flex gap-1 shadow-sm">
             <Shield size={12} /> Admin
-          </Link>
+          </a>
         </div>
       ) : null}
     </nav>
@@ -59,21 +65,40 @@ export function BottomNav({ isAdmin }: { isAdmin?: boolean }) {
 
 export function MoreLinks() {
   const links = [
-    { href: "/app/receitas", label: "Receitas sensoriais", icon: BookOpen },
-    { href: "/app/encadeamento", label: "Encadeamento alimentar", icon: Link2 },
-    { href: "/app/questionario", label: "Questionário", icon: ClipboardList },
+    { href: "/app/novelinha", label: "Novelinha 2D (10 episódios)", icon: BookOpen },
+    { href: "/app/juridico", label: "Direitos e leis (escola / TEA / TDAH)", icon: Scale },
+    { href: "/app/pecs", label: "Cartões PECs / CAA (família)", icon: Baby },
+    { href: "/app/agenda", label: "Agenda e alarmes", icon: Calendar },
+    { href: "/app/medicacoes", label: "Medicações TEA/TDAH (educativo)", icon: Pill },
+    { href: "/app/funcoes-executivas", label: "Funções executivas", icon: Brain },
+    { href: "/app/sugestoes", label: "Sugestões de melhoria", icon: Lightbulb },
+    { href: "/app/profissional", label: "Área profissional (Gold)", icon: Briefcase },
+    { href: "/app/jogos", label: "Jogos interativos", icon: Gamepad2 },
+    { href: "/app/criancas", label: "Perfis e boneco da criança", icon: Baby },
+    { href: "/app/receitas", label: "Receitas, vídeos e ebooks (Gold)", icon: BookOpen },
+    {
+      href: "/app/conteudo/nutricao-comportamento",
+      label: "Nutrição e comportamento (TEA/TDAH)",
+      icon: BookOpen,
+    },
+    { href: "/app/encadeamento", label: "Encadeamento alimentar (Gold)", icon: Link2 },
+    { href: "/app/questionario", label: "Questionário de seletividade", icon: ClipboardList },
     { href: "/app/planos", label: "Planos e acesso", icon: ListOrdered },
     { href: "/privacidade", label: "LGPD / Privacidade", icon: Shield },
   ];
   return (
-    <div className="space-y-3">
+    <div className="grid gap-3 sm:grid-cols-2">
       {links.map(({ href, label, icon: Icon }) => (
-        <Link key={href} href={href} className="card flex items-center gap-3 p-4">
-          <span className="rounded-xl bg-[var(--brand-soft)] p-2 text-[var(--brand)]">
+        <a
+          key={href}
+          href={href}
+          className="card flex min-h-14 items-center gap-3 p-4 transition hover:border-[var(--brand)]"
+        >
+          <span className="rounded-[0.65rem] bg-[var(--brand-soft)] p-2.5 text-[var(--brand)]">
             <Icon size={18} />
           </span>
-          <span className="font-bold">{label}</span>
-        </Link>
+          <span className="font-bold leading-snug">{label}</span>
+        </a>
       ))}
     </div>
   );

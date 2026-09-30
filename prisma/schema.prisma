@@ -21,6 +21,8 @@ model User {
   children       Child[]
   conversations  Conversation[]
   questionnaires QuestionnaireResult[]
+  agendaEvents   AgendaEvent[]
+  suggestions    AppSuggestion[]
 }
 
 model Child {
@@ -38,6 +40,7 @@ model Child {
   heightCm       Float?
   weightKg       Float?
   notes          String?
+  avatar         String         @default("{}")
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   foodProgress   FoodProgress[]
@@ -72,6 +75,9 @@ model FoodProgress {
   foodName  String
   step      Int      @default(1)
   notes     String?
+  /// JSON: [{step,url,kind:"photo"|"video",caption?}]
+  mediaJson String   @default("[]")
+  reward    String?
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 
@@ -90,18 +96,21 @@ model KnowledgeChunk {
 }
 
 model Recipe {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  foodGroups  String   @default("[]")
-  textures    String   @default("[]")
-  steps       String
-  tips        String?
-  imageUrl    String?
-  minPlan     String   @default("PREMIUM")
-  published   Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  title         String
+  description   String
+  foodGroups    String   @default("[]")
+  textures      String   @default("[]")
+  steps         String
+  tips          String?
+  imageUrl      String?
+  videoUrl      String?
+  videoLabel    String?
+  cartoonScenes String   @default("[]")
+  minPlan       String   @default("PREMIUM")
+  published     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model FoodChain {
@@ -125,5 +134,29 @@ model QuestionnaireResult {
   answers   String
   score     Int
   summary   String
+  createdAt DateTime @default(now())
+}
+
+model AgendaEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  childId   String?
+  title     String
+  kind      String   @default("consulta")
+  startsAt  DateTime
+  notes     String?
+  alarmMin  Int      @default(30)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AppSuggestion {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name      String?
+  email     String?
+  message   String
   createdAt DateTime @default(now())
 }

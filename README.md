@@ -12,12 +12,15 @@ Plataforma web mobile-first com a TIA Nutri (IA + RAG) para apoiar pais de crian
 
 ## Funcionalidades
 
-- Login / cadastro com aceite LGPD
+- Login / cadastro com aceite LGPD + **2 dias grátis (TRIAL)**
 - Planos: Básico (R$29,90 / 15 dias), Premium (R$99,90 / 3 meses), Gold (R$220 / 6 meses)
-- Perfis detalhados por criança
+- Perfis detalhados por criança + **boneco personalizado** (características físicas)
+- **12 jogos interativos** (grupos: carnes, verduras, frutas, sucos, arroz, feijão) incl. **Dado Sensorial**
 - Chat com a TIA Nutri + histórico (escopo só da criança ativa)
 - Escada do Comer (passos 1–26)
-- Encadeamento alimentar e receitas sensoriais (Premium/Gold)
+- Funções executivas da alimentação (conteúdo RAG + TIA Nutri)
+- Encadeamento alimentar e receitas sensoriais (Premium/Gold/Trial)
+- **Área profissional Gold**: ideias de terapia, anamnese, materiais imprimíveis, recursos, sessões + IA PRO
 - Questionário de seletividade (investigação inicial)
 - Admin: usuários + biblioteca de conteúdo RAG
 

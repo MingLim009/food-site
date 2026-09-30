@@ -9,13 +9,14 @@ const schema = z.object({
   foodName: z.string().min(1),
   step: z.number().int().min(1).max(26),
   notes: z.string().optional().nullable(),
+  reward: z.string().optional().nullable(),
 });
 
 export async function GET(req: Request) {
   try {
     const user = await requireUser();
     if (!canAccessFeature(user.plan, user.planExpiresAt, "escada")) {
-      return NextResponse.json({ error: "Disponível nos planos Premium e Gold." }, { status: 403 });
+      return NextResponse.json({ error: "Disponível nos planos Médio e Gold." }, { status: 403 });
     }
     const childId = new URL(req.url).searchParams.get("childId");
     if (!childId) return NextResponse.json({ error: "childId obrigatório." }, { status: 400 });
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
   try {
     const user = await requireUser();
     if (!canAccessFeature(user.plan, user.planExpiresAt, "escada")) {
-      return NextResponse.json({ error: "Disponível nos planos Premium e Gold." }, { status: 403 });
+      return NextResponse.json({ error: "Disponível nos planos Médio e Gold." }, { status: 403 });
     }
     const body = schema.parse(await req.json());
     const child = await prisma.child.findFirst({
@@ -50,8 +51,14 @@ export async function POST(req: Request) {
         foodName: body.foodName,
         step: body.step,
         notes: body.notes || null,
+        reward: body.reward || null,
+        mediaJson: "[]",
       },
-      update: { step: body.step, notes: body.notes || null },
+      update: {
+        step: body.step,
+        notes: body.notes || null,
+        ...(body.reward !== undefined ? { reward: body.reward || null } : {}),
+      },
     });
     return NextResponse.json({ item });
   } catch {

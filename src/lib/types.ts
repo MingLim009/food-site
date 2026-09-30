@@ -1,8 +1,9 @@
 export type Role = "PARENT" | "ADMIN";
-export type PlanTier = "NONE" | "BASIC" | "PREMIUM" | "GOLD";
+export type PlanTier = "NONE" | "TRIAL" | "BASIC" | "PREMIUM" | "GOLD";
 
 export const PLAN_RANK: Record<PlanTier, number> = {
   NONE: 0,
+  TRIAL: 2,
   BASIC: 1,
   PREMIUM: 2,
   GOLD: 3,

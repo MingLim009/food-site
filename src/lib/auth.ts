@@ -1,5 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import bcrypt from "bcryptjs";
 import { prisma } from "./db";
 import type { User } from "@prisma/client";
@@ -10,6 +10,20 @@ const COOKIE = "elo_session";
 function getSecret() {
   const secret = process.env.AUTH_SECRET || "dev-secret-eloalimentar";
   return new TextEncoder().encode(secret);
+}
+
+async function shouldUseSecureCookie() {
+  if (process.env.COOKIE_SECURE === "true") return true;
+  if (process.env.COOKIE_SECURE === "false") return false;
+  if (process.env.NODE_ENV === "production") return true;
+  try {
+    const h = await headers();
+    const proto = h.get("x-forwarded-proto") || h.get("x-forwarded-protocol");
+    if (proto?.split(",")[0]?.trim() === "https") return true;
+  } catch {
+    // headers() unavailable outside request context
+  }
+  return false;
 }
 
 export type SessionUser = {
@@ -44,10 +58,11 @@ export async function createSession(user: User) {
     .sign(getSecret());
 
   const jar = await cookies();
+  const secure = await shouldUseSecureCookie();
   jar.set(COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure,
     path: "/",
     maxAge: 60 * 60 * 24 * 30,
   });

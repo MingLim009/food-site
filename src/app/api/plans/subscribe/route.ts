@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       ok: true,
       plan: updated.plan,
       planExpiresAt: updated.planExpiresAt,
-      note: "Pagamento simulado para MVP. Integre gateway (Mercado Pago/Stripe) em produção.",
+      note: "Demo local. Em produção o pagamento ocorre na Monetizze e o acesso é liberado pelo postback.",
     });
   } catch {
     return NextResponse.json({ error: "Falha ao ativar plano." }, { status: 400 });
