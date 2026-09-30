@@ -38,6 +38,7 @@ yarn-error.log*
 # database
 /prisma/*.db
 /prisma/*.db-journal
+!/prisma/seed.db
 
 # typescript
 *.tsbuildinfo
@@ -69,3 +70,5 @@ scripts/upload-monetizze-capa.mjs
 scripts/fix-monetizze-access.mjs
 public/brand/dz-opts.txt
 public/brand/upload-capa.js
+.vercel
+.env*

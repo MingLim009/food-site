@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
     "*.trycloudflare.com",
     "position-entire-issue-dry.trycloudflare.com",
   ],
+  // Keep seeded SQLite available in Vercel serverless functions
+  outputFileTracingIncludes: {
+    "/api/**/*": ["./prisma/seed.db", "./prisma/schema.prisma"],
+    "/login": ["./prisma/seed.db"],
+    "/app/**/*": ["./prisma/seed.db"],
+    "/*": ["./prisma/seed.db"],
+  },
   async headers() {
     return [
       {
