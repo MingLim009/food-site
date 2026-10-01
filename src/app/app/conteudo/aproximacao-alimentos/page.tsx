@@ -50,8 +50,7 @@ export default function AproximacaoAlimentosPage() {
         </h1>
         <p className="mt-2 text-sm text-[var(--muted)]">
           Brincadeiras sensoriais para aproximar a criança do alimento sem forçar a ingestão —
-          olhar, tocar, cheirar e brincar também contam. Inspirado no carrossel de @andreac.lins ·
-          EloAlimentar / TIA Nutri.
+          olhar, tocar, cheirar e brincar também contam. EloAlimentar / TIA Nutri.
         </p>
       </div>
 
