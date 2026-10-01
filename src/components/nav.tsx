@@ -77,6 +77,11 @@ export function MoreLinks() {
     { href: "/app/criancas", label: "Perfis e boneco da criança", icon: Baby },
     { href: "/app/receitas", label: "Receitas, vídeos e ebooks (Gold)", icon: BookOpen },
     {
+      href: "/app/conteudo/aproximacao-alimentos",
+      label: "Ideias para aproximação de alimentos",
+      icon: Lightbulb,
+    },
+    {
       href: "/app/conteudo/nutricao-comportamento",
       label: "Nutrição e comportamento (TEA/TDAH)",
       icon: BookOpen,

@@ -48,6 +48,7 @@ async function main() {
     "/app/jogos",
     "/app/criancas",
     "/app/conteudo/nutricao-comportamento",
+    "/app/conteudo/aproximacao-alimentos",
     "/app/profissional",
     "/app/chat",
   ];
